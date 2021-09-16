@@ -10,6 +10,9 @@ public class Controlador {
         int opcion = 0;
         int opcion_ram = 0;
 
+        ArrayList<Integer> estado_ram = new ArrayList<Integer>();;
+        String mensaje;
+
 
         Memoria memoria = new Memoria(0, 0, 0);
         ArrayList<Programa> listaprogramas = new ArrayList<Programa>();
@@ -52,18 +55,31 @@ public class Controlador {
             //LLAMAR UN MÉTODO DE LA VISTA PARA PREGUNTAR EL NOMBRE DEL PROGRAMA. 
             String nom_programa = "Word";
             boolean stop = false;
-            int non_filled_space_bf = 0;
+            int acumulado = 0;
+            int espacio_buscado = 0;
             
             while(stop == false){      
                 for(int i = 0; i <= Memoria.ram.size()-1; i++){
                     if(Memoria.ram.get(i).getNombre() != nom_programa){
-                        non_filled_space_bf = non_filled_space_bf + Memoria.ram.get(i).getEspacio();
+                        acumulado = acumulado + Memoria.ram.get(i).getEspacio();
                     
                     }else{
-                        
+                        espacio_buscado = Memoria.ram.get(i).getEspacio();
+                        stop = true;
                     }
                 }
             }
+            acumulado = acumulado + 1;
+            espacio_buscado = espacio_buscado + acumulado - 1;
+            mensaje = "El programa " + nom_programa + " Se ejecuta desde el bloque de memoria " + acumulado + " y termina en " + espacio_buscado;
+            // LLAMAR MÉTODO DE VISTA PARA MOSTRAR ESTO. 
+
+        }else if(opcion == 7){//VER ESTADO DE LA RAM
+            mensaje = "Se ocupa del bloque 1 al bloque " + memoria.getFilledSpace() + " Y está libre desde el bloque " + (memoria.getFilledSpace() + 1) + " al bloque " + memoria.getTotalSpace();
+            //ENVIAR UN MÉTODO PARA QUE ESA SHIT VAYA A LA VISTA. 
+
+        }else if(opcion == 8){//Realizar un ciclo de reloj
+            memoria.click();
         }
     }//Fin del main
 }// Fin de clase
