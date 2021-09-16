@@ -29,8 +29,8 @@ public class Programa {
         return ciclos;
     }
 
-    public void exciclos(){
-        ciclos --;
+    public void exciclos(int num){
+        ciclos = ciclos - num;
     }
 
 }
