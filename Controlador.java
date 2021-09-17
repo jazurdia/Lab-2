@@ -30,47 +30,38 @@ public class Controlador {
                 vista.opcion3(memoria.getTotalSpace(), memoria.getEmptySpace(), memoria.getFilledSpace());
 
             }else if(opcion == 4){// Ver los programas en ejecución. 
-                
                 ArrayList<String> lista_para_imprimir = new ArrayList<String>();
-                for(int i = 0; i <= Memoria.ram.size() - 1; i++){
-                    lista_para_imprimir.add(Memoria.ram.get(i).getNombre());
+                for(int i = 0; i < memoria.getRam().size()-1; i++){
+                    lista_para_imprimir.add(memoria.getNomByProgramaRam(i));
                 }
+
                 vista.opcion4y5(lista_para_imprimir);
-            
+                    
+
             }else if(opcion == 5){//Mostar programas en cola. 
                 ArrayList<String> lista_para_imprimir = new ArrayList<String>();
-                for(int i = 0; i <= Memoria.cola.size() - 1; i++){
-                    lista_para_imprimir.add(Memoria.cola.get(i).getNombre());
+                for(int i = 0; i < memoria.getRam().size()-1; i++){
+                    lista_para_imprimir.add(memoria.getNomByProgramaCola(i));
                 }
+
                 vista.opcion4y5(lista_para_imprimir);
 
-            }else if(opcion == 6){//Ver la posición de los bloques de RAM que ocupa un programa.
-                String nom_programa = vista.opcion6a();
-                boolean stop = false;
-                int acumulado = 0;
-                int espacio_buscado = 0;
-                
-                while(stop == false){      
-                    for(int i = 0; i <= Memoria.ram.size()-1; i++){
-                        if(Memoria.ram.get(i).getNombre() != nom_programa){
-                            acumulado = acumulado + Memoria.ram.get(i).getEspacio();
-                        
-                        }else{
-                            espacio_buscado = Memoria.ram.get(i).getEspacio();
-                        }
-                    }
-                    stop = true;
-                }
-                acumulado = acumulado + 1;
-                espacio_buscado = espacio_buscado + acumulado - 1;
-                vista.opcion6b(acumulado, espacio_buscado, nom_programa);
-                /**
-                 * HAY QUE HACER ESTO DE NUEVOOO AAAAAAA
-                 */
-
             }else if(opcion == 6){//Ver la posicion de los bloques de RAM
-            
-            
+                
+                ArrayList<String> posicion = new ArrayList<String>();
+                for (int i = 0; i< memoria.getRam().size(); i++){
+                    posicion.add(memoria.getNomByProgramaCola(i));
+                }
+
+                String nom_programa = vista.opcion6a();
+                int pos_inicial = 0;
+                int pos_final = 0;
+                for (int i = 0;i<posicion.indexOf(nom_programa);i++){
+                    pos_inicial = pos_inicial + memoria.getPrograma(i).getEspacio();
+                }
+                pos_final = pos_inicial + memoria.bloquesByPrograma(posicion.indexOf(nom_programa));
+                vista.opcion6b(pos_inicial, pos_final, nom_programa);
+
             
             }else if(opcion == 7){//VER ESTADO DE LA RAM
                 vista.opcion7(memoria.getFilledSpace(), memoria.getFilledSpace() + 1, memoria.getTotalSpace());

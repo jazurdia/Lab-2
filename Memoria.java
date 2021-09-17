@@ -7,8 +7,6 @@ public class Memoria {
     private int tipo_de_memoria = 0;
     static public LinkedList<Programa> ram = new LinkedList<Programa>(); //SE USARÁ EN EL CONTROLADOR. NO SE MODIFICARÁ
     static public LinkedList<Programa> cola = new LinkedList<Programa>(); //SE USARÁ EN EL CONTROLADOR. NO SE MODIFICARÁ
-    // 1 = SDR
-    // 2 = DDR
 
     /**
      * 
@@ -89,5 +87,29 @@ public class Memoria {
         }
     }
 
+    public Programa getPrograma(int i){
+        return ram.get(i);
+    }
+
+    public String getNomByProgramaRam(int i){
+        return ram.get(i).getNombre();
+    }
+
+    public String getNomByProgramaCola(int i){
+        return cola.get(i).getNombre();
+    }
+
+    public LinkedList<Programa> getRam(){
+        return ram;
+    }
+
+    public LinkedList<Programa> getCola(){
+        return cola;
+    }
+
+    public int bloquesByPrograma(int i){
+        int bloquesByPrograma = ram.get(i).getEspacio();
+        return bloquesByPrograma;
+    }
 
 }

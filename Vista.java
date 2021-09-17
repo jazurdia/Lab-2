@@ -74,8 +74,8 @@ public class Vista {
         return opcion6a;
     }
 
-    public void opcion6b(int acumulado, int espacio_buscado, String nom_programa){
-        System.out.println("El programa " + nom_programa + " Se ejecuta desde el bloque de memoria " + acumulado + " y termina en " + espacio_buscado);
+    public void opcion6b(int pos_inicial,int pos_final , String nom_programa){
+        System.out.println("El programa "+nom_programa+" ocupa del bloque de memoria "+pos_inicial+" al bloque de memoria "+pos_final);
     }
 
     public void opcion7(int filled_space, int inicio, int total){
