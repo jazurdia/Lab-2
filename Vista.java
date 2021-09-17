@@ -82,6 +82,10 @@ public class Vista {
         System.out.println("Se ocupa del bloque 1 al bloque " + filled_space + ". Está libre desde el bloque " + inicio + " al bloque " + total + "." );
     }
 
+    public void ans0(){
+        System.out.println("No hay programas.");
+    }
+
 
 
 

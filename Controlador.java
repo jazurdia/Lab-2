@@ -31,7 +31,7 @@ public class Controlador {
 
             }else if(opcion == 4){// Ver los programas en ejecución. 
                 ArrayList<String> lista_para_imprimir = new ArrayList<String>();
-                for(int i = 0; i < memoria.getRam().size()-1; i++){
+                for(int i = 0; i < memoria.getRam().size(); i++){
                     lista_para_imprimir.add(memoria.getNomByProgramaRam(i));
                 }
 
@@ -39,12 +39,16 @@ public class Controlador {
                     
 
             }else if(opcion == 5){//Mostar programas en cola. 
-                ArrayList<String> lista_para_imprimir = new ArrayList<String>();
-                for(int i = 0; i < memoria.getRam().size()-1; i++){
-                    lista_para_imprimir.add(memoria.getNomByProgramaCola(i));
+                
+                if(memoria.getCola().size() != 0){
+                    ArrayList<String> lista_para_imprimir = new ArrayList<String>();
+                    for(int i = 0; i < memoria.getRam().size()-1; i++){
+                        lista_para_imprimir.add(memoria.getNomByProgramaCola(i));
+                    }
+                    vista.opcion4y5(lista_para_imprimir);
+                }else{
+                    vista.ans0();
                 }
-
-                vista.opcion4y5(lista_para_imprimir);
 
             }else if(opcion == 6){//Ver la posicion de los bloques de RAM
                 
@@ -62,7 +66,6 @@ public class Controlador {
                 pos_final = pos_inicial + memoria.bloquesByPrograma(posicion.indexOf(nom_programa));
                 vista.opcion6b(pos_inicial, pos_final, nom_programa);
 
-            
             }else if(opcion == 7){//VER ESTADO DE LA RAM
                 vista.opcion7(memoria.getFilledSpace(), memoria.getFilledSpace() + 1, memoria.getTotalSpace());
 
