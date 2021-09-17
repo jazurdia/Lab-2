@@ -54,7 +54,7 @@ public class Controlador {
                 
                 ArrayList<String> posicion = new ArrayList<String>();
                 for (int i = 0; i< memoria.getRam().size(); i++){
-                    posicion.add(memoria.getNomByProgramaCola(i));
+                    posicion.add(memoria.getNomByProgramaRam(i));
                 }
 
                 String nom_programa = vista.opcion6a();
@@ -63,6 +63,8 @@ public class Controlador {
                 for (int i = 0;i<posicion.indexOf(nom_programa);i++){
                     pos_inicial = pos_inicial + memoria.getPrograma(i).getEspacio();
                 }
+                System.out.println("MIRA ESTA COSA TUPIDO");
+                System.out.println(memoria.bloquesByPrograma(posicion.indexOf(nom_programa))); //ESTA MIERDA NO FUNCINA, VOLVERLO A HACER. 
                 pos_final = pos_inicial + memoria.bloquesByPrograma(posicion.indexOf(nom_programa));
                 vista.opcion6b(pos_inicial, pos_final, nom_programa);
 
