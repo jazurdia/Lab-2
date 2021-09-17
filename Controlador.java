@@ -1,6 +1,6 @@
 /**
  * @author Javier Alejandro Azurdia Arrecis
- * @version 0.6
+ * @version 0.7
  */
 
 import java.util.*;
@@ -9,16 +9,12 @@ public class Controlador {
         
         int opcion = 0;
         int opcion_ram = 0;
-
         Vista vista = new Vista();
-        ArrayList<Integer> estado_ram = new ArrayList<Integer>();;
-        String mensaje;
         Memoria memoria = new Memoria(0, 0, 0);
         boolean terminar = false;
 
         while (terminar == false){
             opcion = vista.menu();
-            
             if (opcion == 1){//Elegir tipo de RAM
                 opcion_ram = vista.opcion1();
                 if(opcion_ram == 1){
@@ -49,7 +45,6 @@ public class Controlador {
                 vista.opcion4y5(lista_para_imprimir);
 
             }else if(opcion == 6){//Ver la posición de los bloques de RAM que ocupa un programa.
-                //LLAMAR UN MÉTODO DE LA VISTA PARA PREGUNTAR EL NOMBRE DEL PROGRAMA. 
                 String nom_programa = vista.opcion6a();
                 boolean stop = false;
                 int acumulado = 0;
@@ -62,14 +57,21 @@ public class Controlador {
                         
                         }else{
                             espacio_buscado = Memoria.ram.get(i).getEspacio();
-                            stop = true;
                         }
                     }
+                    stop = true;
                 }
                 acumulado = acumulado + 1;
                 espacio_buscado = espacio_buscado + acumulado - 1;
                 vista.opcion6b(acumulado, espacio_buscado, nom_programa);
+                /**
+                 * HAY QUE HACER ESTO DE NUEVOOO AAAAAAA
+                 */
 
+            }else if(opcion == 6){//Ver la posicion de los bloques de RAM
+            
+            
+            
             }else if(opcion == 7){//VER ESTADO DE LA RAM
                 vista.opcion7(memoria.getFilledSpace(), memoria.getFilledSpace() + 1, memoria.getTotalSpace());
 
