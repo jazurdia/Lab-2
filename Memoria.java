@@ -55,18 +55,17 @@ public class Memoria {
     }
 
     public void addProgramas(Programa programa){
-        //CASO: SDR con menos datos que el límite temporal
         if(tipo_de_memoria == 1){
-            // SDR TIENE UN LÍMITE FIJO. SI SE SOBREPASA EL LÍMITE FIJO, SE DEBE ENVIAR A COLA. 
             if(programa.getEspacio()+ bloques_usados <= bloques){
                 ram.add(programa);
+                bloques_usados = bloques_usados + programa.getEspacio();
             }else if(programa.getEspacio() + bloques_usados > bloques_usados){
                 cola.add(programa);
             }
         }else if(tipo_de_memoria == 2){
-            //DDR tiene un límite temporal y uno fijo en 64*16. Si se sobrepasa el límite fijo, se debe enviar a la cola. 
             if (programa.getEspacio() + bloques_usados <= 64*16){
                 ram.add(programa);
+                bloques_usados = bloques_usados + programa.getEspacio();
                 conf_memory();
             }else if(programa.getEspacio() + bloques_usados > 64*16){
                 cola.add(programa);
