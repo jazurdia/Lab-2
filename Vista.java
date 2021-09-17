@@ -32,7 +32,7 @@ public class Vista {
 
     public int opcion1a(){ // Ingresa la capacidad de la RAM
         System.out.println("Ingresa la capacidad de alacenamiento que quieres que tu RAM tenga");
-        System.out.println("4GB / 8 GB / 12 GB / 16GB / 32GB / 64GB");
+        System.out.println("4GB / 8GB / 12GB / 16GB / 32GB / 64GB");
         System.out.println("Ingresa solamente el número. Ej: 4 ");
         int opcion1a = in.nextInt();
         return opcion1a;
