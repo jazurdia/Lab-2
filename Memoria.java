@@ -40,15 +40,24 @@ public class Memoria {
     }
 
     public int getEmptySpace(){
+        if(tipo_de_memoria == 2){
+            conf_memory();
+        }
         int empty_space = bloques - bloques_usados;
         return empty_space;
     }
 
     public int getFilledSpace(){
+        if(tipo_de_memoria == 2){
+            conf_memory();
+        }
         return bloques_usados;
     }
 
     public int getTotalSpace(){
+        if(tipo_de_memoria == 2){
+            conf_memory();
+        }
         return bloques;
     }
 

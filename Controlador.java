@@ -40,9 +40,9 @@ public class Controlador {
 
             }else if(opcion == 5){//Mostar programas en cola. 
                 
-                if(memoria.getCola().size() != 0){
+                if(memoria.getCola().size() > 0){
                     ArrayList<String> lista_para_imprimir = new ArrayList<String>();
-                    for(int i = 0; i < memoria.getRam().size()-1; i++){
+                    for(int i = 0; i < memoria.getCola().size(); i++){
                         lista_para_imprimir.add(memoria.getNomByProgramaCola(i));
                     }
                     vista.opcion4y5(lista_para_imprimir);
@@ -56,21 +56,20 @@ public class Controlador {
                     String nom_programa = vista.opcion6a();
                     ArrayList<String> lista_de_programas = new ArrayList<String>();
                     
-                    for (int i = 0; i<= memoria.getRam().size()-1; i++){
+                    for (int i = 0; i< memoria.getRam().size(); i++){
                         lista_de_programas.add(memoria.getRam().get(i).getNombre()); // guardo los nombres de todos los programas de la RAM
                     }
 
-                    int pos_i = 1;
+                    int pos_i = 0;
                     int pos_f = 0;
 
                     for(int i = 0; i < lista_de_programas.indexOf(nom_programa);i++){
                         pos_i = pos_i + memoria.getRam().get(i).getEspacio();
                     }
 
-                    for(int i = 0; i > lista_de_programas.indexOf(nom_programa);i++){
-                        pos_f = pos_f + memoria.getRam().get(i).getEspacio();
-                    }
-
+                    pos_f = pos_i + memoria.getRam().get(lista_de_programas.indexOf(nom_programa)).getEspacio();
+                    
+                    vista.opcion6b(pos_i, pos_f, nom_programa);
 
                 }else{
                     vista.ans0();
