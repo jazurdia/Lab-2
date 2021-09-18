@@ -19,10 +19,8 @@ public class Vista {
             System.out.println("9. terminar la ejecucción del simulador");
             
             try {
-                
                 opcion = in.nextInt();
                 parar = true;
-
             } catch (InputMismatchException e) {
                 in = new Scanner(System.in);
                 System.out.println("Intenta nuevamente. ");
@@ -43,16 +41,39 @@ public class Vista {
     }
 
     public int opcion1a(){ // Ingresa la capacidad de la RAM
-        System.out.println("Ingresa la capacidad de alacenamiento que quieres que tu RAM tenga");
-        System.out.println("4GB / 8GB / 12GB / 16GB / 32GB / 64GB");
-        System.out.println("Ingresa solamente el número. Ej: 4 ");
-        int opcion1a = in.nextInt();
+        
+        int opcion1a = 0;
+        boolean parar = false;
+        while(parar == false){
+            try {
+                System.out.println("Ingresa la capacidad de alacenamiento que quieres que tu RAM tenga");
+                System.out.println("4GB / 8GB / 12GB / 16GB / 32GB / 64GB");
+                System.out.println("Ingresa solamente el número. Ej: 4 ");
+                opcion1a = in.nextInt();
+                parar = true;
+            } catch (Exception e) {
+                System.out.println("Intenta de nuevo");
+                in = new Scanner(System.in);            
+            }
+        }
+
+        
         return opcion1a;
     }
 
     public String opcion2a(){//Ingresa el nombre del programa. 
-        System.out.println("Ingresa el nombre del programa");
-        String opcion2a = in.next();
+        String opcion2a = "default";
+        boolean parar = false;
+        while (parar == false){
+            try {
+                System.out.println("Ingresa el nombre del programa");
+                opcion2a = in.next();
+                parar = true;
+            } catch (Exception e) {
+                System.out.println("Intenta de nuevo");
+                in = new Scanner(System.in);
+            }
+        }        
         return opcion2a;
     }
 
@@ -63,8 +84,9 @@ public class Vista {
             try {
                 System.out.println("Ingresa los bloques de memoria que ocupa el programa.");
                 opcion2b = in.nextInt();
+                parar = true;
             } catch (Exception e) {
-                ans0();
+                System.out.println("Intenta de nuevo");
                 in = new Scanner(System.in);
             }
         }
@@ -74,8 +96,19 @@ public class Vista {
     }
 
     public int opcion2c(){ // Ingresa el espacio que ocupa el programa. 
-        System.out.println("Ingresa los ciclos de reloj del programa");
-        int opcion2c = in.nextInt();
+        int opcion2c = 0;
+        boolean parar = false;
+        while(parar == false){
+            try {
+                System.out.println("Ingresa los ciclos de reloj del programa");
+                opcion2c = in.nextInt();
+                parar = true;
+            } catch (Exception e) {
+                System.out.println("Intenta de nuevo");
+                in = new Scanner(System.in);
+            }
+        }
+        
         return opcion2c;
     }
 
@@ -92,8 +125,19 @@ public class Vista {
     }
 
     public String opcion6a(){
-        System.out.println("Ingresa el nombre del programa que quieres buscar: ");
-        String opcion6a = in.next();
+        
+        String opcion6a = "default";
+        boolean parar = false;
+        while (parar == false){
+            try {
+                System.out.println("Ingresa el nombre del programa que quieres buscar: ");
+                opcion6a = in.next();
+                parar = true;
+            } catch (Exception e) {
+                System.out.println("Intenta de nuevo");
+                in = new Scanner(System.in);
+            }
+        }
         return opcion6a;
     }
 

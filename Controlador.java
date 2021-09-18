@@ -51,39 +51,6 @@ public class Controlador {
                 }
 
             }else if(opcion == 6){//Ver la posicion de los bloques de RAM
-                
-                /** 
-                ArrayList<String> posicion = new ArrayList<String>();
-                for (int i = 0; i< memoria.getRam().size(); i++){
-                    posicion.add(memoria.getNomByProgramaRam(i));
-                }
-
-                String nom_programa = vista.opcion6a();
-                int pos_inicial = 0;
-                int pos_final = 0;
-                for (int i = 0;i<=posicion.contains(nom_programa);i++){
-                    pos_inicial = pos_inicial + memoria.getPrograma(i).getEspacio();
-                }
-
-
-                //pos_final = pos_inicial + memoria.bloquesByPrograma(posicion.indexOf(nom_programa));
-                
-                /**
-                 * TENGO QUE OBTENER EL ESPACIO QUE OCUPA X PROGRAMA
-               
-
-                int index_de_programa = memoria.getRam().indexOf(nom_programa);
-                int bloques_del_programa = memoria.getRam().get(index_de_programa).getEspacio();
-
-                pos_final = pos_inicial + bloques_del_programa ;
-                vista.opcion6b(pos_inicial, pos_final, nom_programa);
-
-                */
-
-                
-                
-                //for (int i = 0; i <= memoria.getRam().indexOf("X".getNombre() == nom_prograam)); i++ ){
-                //}
 
                 if(memoria.getRam().size() > 0){
                     String nom_programa = vista.opcion6a();
@@ -108,14 +75,6 @@ public class Controlador {
                 }else{
                     vista.ans0();
                 }
-
-                
-                
-                boolean stop6 = false;
-                while(stop6 == false){
-                    
-                }
-
 
             }else if(opcion == 7){//VER ESTADO DE LA RAM
                 vista.opcion7(memoria.getFilledSpace(), memoria.getFilledSpace() + 1, memoria.getTotalSpace());
