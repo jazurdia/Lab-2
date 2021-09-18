@@ -52,6 +52,7 @@ public class Controlador {
 
             }else if(opcion == 6){//Ver la posicion de los bloques de RAM
                 
+                /** 
                 ArrayList<String> posicion = new ArrayList<String>();
                 for (int i = 0; i< memoria.getRam().size(); i++){
                     posicion.add(memoria.getNomByProgramaRam(i));
@@ -60,13 +61,61 @@ public class Controlador {
                 String nom_programa = vista.opcion6a();
                 int pos_inicial = 0;
                 int pos_final = 0;
-                for (int i = 0;i<posicion.indexOf(nom_programa);i++){
+                for (int i = 0;i<=posicion.contains(nom_programa);i++){
                     pos_inicial = pos_inicial + memoria.getPrograma(i).getEspacio();
                 }
-                System.out.println("MIRA ESTA COSA TUPIDO");
-                System.out.println(memoria.bloquesByPrograma(posicion.indexOf(nom_programa))); //ESTA MIERDA NO FUNCINA, VOLVERLO A HACER. 
-                pos_final = pos_inicial + memoria.bloquesByPrograma(posicion.indexOf(nom_programa));
+
+
+                //pos_final = pos_inicial + memoria.bloquesByPrograma(posicion.indexOf(nom_programa));
+                
+                /**
+                 * TENGO QUE OBTENER EL ESPACIO QUE OCUPA X PROGRAMA
+               
+
+                int index_de_programa = memoria.getRam().indexOf(nom_programa);
+                int bloques_del_programa = memoria.getRam().get(index_de_programa).getEspacio();
+
+                pos_final = pos_inicial + bloques_del_programa ;
                 vista.opcion6b(pos_inicial, pos_final, nom_programa);
+
+                */
+
+                
+                
+                //for (int i = 0; i <= memoria.getRam().indexOf("X".getNombre() == nom_prograam)); i++ ){
+                //}
+
+                if(memoria.getRam().size() > 0){
+                    String nom_programa = vista.opcion6a();
+                    ArrayList<String> lista_de_programas = new ArrayList<String>();
+                    
+                    for (int i = 0; i<= memoria.getRam().size()-1; i++){
+                        lista_de_programas.add(memoria.getRam().get(i).getNombre()); // guardo los nombres de todos los programas de la RAM
+                    }
+
+                    int pos_i = 1;
+                    int pos_f = 0;
+
+                    for(int i = 0; i < lista_de_programas.indexOf(nom_programa);i++){
+                        pos_i = pos_i + memoria.getRam().get(i).getEspacio();
+                    }
+
+                    for(int i = 0; i > lista_de_programas.indexOf(nom_programa);i++){
+                        pos_f = pos_f + memoria.getRam().get(i).getEspacio();
+                    }
+
+
+                }else{
+                    vista.ans0();
+                }
+
+                
+                
+                boolean stop6 = false;
+                while(stop6 == false){
+                    
+                }
+
 
             }else if(opcion == 7){//VER ESTADO DE LA RAM
                 vista.opcion7(memoria.getFilledSpace(), memoria.getFilledSpace() + 1, memoria.getTotalSpace());

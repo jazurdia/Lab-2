@@ -1,25 +1,37 @@
-import java.util.Scanner;
 import java.util.*;
-
-
 public class Vista {
-    int opcion = 0;
     Scanner in = new Scanner(System.in);
 
-    public int menu(){ //Menu principal. 
-        System.out.println("Bienvenido al simulador de RAM. Elige una de las siguientes opciones: ");
-        System.out.println("1. Inicializar la RAM");
-        System.out.println("2. Ingresar los programas que serán procesados para usar la memoria RAM");
-        System.out.println("3. Ver las estadísticas de la RAM");
-        System.out.println("4. Ver los programas en ejecucción");
-        System.out.println("5. Ver los programas en cola");
-        System.out.println("6. Ver los bloques en los que un programa se ejecuta");
-        System.out.println("7. Ver el estado de memoria.");
-        System.out.println("8. Realizar un ciclo de reloj");
-        System.out.println("9. terminar la ejecucción del simulador");
-        opcion = in.nextInt();
-        return opcion;
-    }
+    public int menu()throws InputMismatchException{ //Menu principal. 
+        int opcion = 0;
+        boolean parar = false;
+        
+        while(parar == false){
+            System.out.println("Bienvenido al simulador de RAM. Elige una de las siguientes opciones: ");
+            System.out.println("1. Inicializar la RAM");
+            System.out.println("2. Ingresar los programas que serán procesados para usar la memoria RAM");
+            System.out.println("3. Ver las estadísticas de la RAM");
+            System.out.println("4. Ver los programas en ejecucción");
+            System.out.println("5. Ver los programas en cola");
+            System.out.println("6. Ver los bloques en los que un programa se ejecuta");
+            System.out.println("7. Ver el estado de memoria.");
+            System.out.println("8. Realizar un ciclo de reloj");
+            System.out.println("9. terminar la ejecucción del simulador");
+            
+            try {
+                
+                opcion = in.nextInt();
+                parar = true;
+
+            } catch (InputMismatchException e) {
+                in = new Scanner(System.in);
+                System.out.println("Intenta nuevamente. ");
+            }
+        }
+        
+        return opcion;   
+    }            
+
 
     public int opcion1(){// Selecciona el tipo de ram.
         int tipo_ram = 0;
@@ -45,8 +57,19 @@ public class Vista {
     }
 
     public int opcion2b(){ // Ingresa el espacio que ocupa el programa. 
-        System.out.println("Ingresa los bloques de memoria que ocupa el programa.");
-        int opcion2b = in.nextInt();
+        int opcion2b = 0;
+        boolean parar = false;
+        while (parar == false){
+            try {
+                System.out.println("Ingresa los bloques de memoria que ocupa el programa.");
+                opcion2b = in.nextInt();
+            } catch (Exception e) {
+                ans0();
+                in = new Scanner(System.in);
+            }
+        }
+        
+        
         return opcion2b;
     }
 
@@ -70,7 +93,7 @@ public class Vista {
 
     public String opcion6a(){
         System.out.println("Ingresa el nombre del programa que quieres buscar: ");
-        String opcion6a = in.nextLine();
+        String opcion6a = in.next();
         return opcion6a;
     }
 
